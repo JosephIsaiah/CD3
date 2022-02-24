@@ -1,0 +1,109 @@
+.form-call-legend {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.form-call {
+  display: flex;
+  // grid-template-columns: 1fr 1fr 1fr 1fr;
+  // grid-gap: 0.5rem;
+  width: 100%;
+  flex-wrap: wrap;
+
+  label {
+    position: relative;
+    margin: 0 12px 12px 0;
+
+    > div {
+      // background-color: #a00;
+      padding: 0.5em 1em;
+      border-radius: 4px;
+      background-image: linear-gradient(90deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.2) 100%);
+        &:hover{
+        -webkit-box-shadow: inset 1px 1px 12px #000;
+        -moz-box-shadow:    inset 1px 1px 12px #000;
+        box-shadow:         inset 1px 1px 12px #000;
+  }
+    }
+
+    > input:checked + div {
+      background-image: none;
+    }
+  }
+
+  input {
+    display: none;
+    // position: absolute;
+    // top: 1.325rem;
+    // left: 1.5rem;
+  }
+
+  &.form-call-boolean {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &.form-call-checkbox,
+  &.form-call-radiobutton,
+  &.form-call-boolean,
+  &.form-call-percentage,
+  &.form-call-range {
+    .medical:before {
+      border-color: $medical-color !important;
+    }
+
+    .medical:after {
+      background: $medical-color !important;
+    }
+
+    .trauma:before {
+      border-color: $trauma-color !important;
+    }
+
+    .trauma:after {
+      background: $trauma-color !important;
+    }
+
+    label > input + div:before,
+    label > input:checked + div:after {
+      content: "";
+      position: absolute;
+      border-radius: 4px;
+    }
+
+    label > input + div:before {
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      top: -4px;
+      left: -4px;
+      border: 2px solid #000;
+    }
+
+    label > input:checked + div:after {
+      width: 12px;
+      height: 12px;
+      top: 0px;
+      left: 0px;
+      background: #000;
+    }
+  }
+
+  &.form-call-radiobutton,
+  &.form-call-boolean,
+  &.form-call-percentage,
+  &.form-call-range {
+    label > input + div:before,
+    label > input:checked + div:after {
+      border-radius: 50% !important;
+    }
+  }
+
+  &.form-call-percentage {
+    grid-template-columns: repeat(11, 1fr);
+  }
+
+  &.form-call-range {
+    // grid-template-columns: repeat(11, 1fr);
+  }
+}
+

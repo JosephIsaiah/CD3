@@ -1,0 +1,51 @@
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px 1px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.08);
+    border: 0;
+    margin-top: 10px;
+    background-color: #343a40;
+    color: #fff;
+
+    &:hover{
+      border-color: #efefef3b;
+      border-width: 1px;
+      border-style: solid;
+    }
+  }
+
+
+img {
+    max-width: 100%;
+}
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    padding: 1.25rem;
+    box-sizing: border-box;
+}
+
+.card-grid {
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+}
+
+.card-grid-hospital {
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+}
+
+h3, .h3 {
+    font-size: 1.25rem;
+}

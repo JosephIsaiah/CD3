@@ -1,0 +1,46 @@
+<div class="call-wrapper">
+  <div class="sidebar"  id="calls-bar">
+    <% @hospital.calls.sort_by { |obj| obj.created_at }.reverse.each do |call| %>
+      <%= render "hospitals/call_card", call: call %>
+    <% end %>
+  </div>
+
+  <div class="content">
+
+    <div class="call-info" id="call-info">
+      <% @hospital.calls.each do |call| %>
+        <%= render "calls/show", call: call %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<% content_for :after_js do %>
+  <script>
+    App["hospital_<%= @hospital.id %>_calls"] = App.cable.subscriptions.create({
+      channel: 'HospitalChannel',
+      hospital_id: <%= @hospital.id %>,
+    }, {
+        received: (data) => {
+          // When a broadcast is received to the hospital
+          const callsBar = document.querySelector("#calls-bar");
+          const content = document.querySelector("#call-info");
+
+          // Create an element to receive the card to the bar
+          const element = document.createElement("div");
+          // Add the call card partial to the element
+          element.innerHTML = data.card;
+          // Assign the handleCallClick behavior to the card
+          element.querySelector(".call-card").addEventListener("click", window.handleCallClick)
+          // Push the element into the cards bar
+          callsBar.insertAdjacentElement("afterBegin", element);
+
+          // Push the content of the call into the content bar
+          content.insertAdjacentHTML("beforeEnd", data.content);
+
+          // Change the currently shown content, to the current call
+          window.filterCall(data.id)
+      }
+    })
+  </script>
+<% end %>

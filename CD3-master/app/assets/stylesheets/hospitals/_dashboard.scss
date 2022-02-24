@@ -1,0 +1,44 @@
+h2 {
+  font-weight: bold
+}
+
+.call-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  height: 100vh;
+  // width: 100vw;
+}
+
+.sidebar {
+  flex-basis: 30vw; // Width of the flex element.
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+
+.content {
+  flex-grow: 1;
+  overflow-y: scroll;
+  padding-left: 16px;
+  padding-top: 16px;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.call-info p {
+  font-family: 'Karla';
+  font-size: 24px;
+  color: white;
+}
+
+.vital-signs p {
+  display: inline-block;
+  margin-right: 12px;
+}
+
+.call-detail {
+  // background:
+}
